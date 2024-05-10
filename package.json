@@ -1,0 +1,15 @@
+{
+  "name": "caresync",
+  "version": "1.0.0",
+  "description": "![Yolo](https://github.com/Ekansh-Bhushan/Vihaan007/assets/129383527/b0e96d37-15b2-46f4-bb5b-0655fa585d7c)",
+  "main": "chat.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}
