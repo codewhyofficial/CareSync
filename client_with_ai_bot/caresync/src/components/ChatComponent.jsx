@@ -55,77 +55,77 @@ function ChatComponent() {
     setIsOpen(!isOpen); // Toggle the visibility of the chat component
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSendMessage();
+  };
+
   return (
     <>
-        <header class="font-black">
+      <header class="font-black">
         {/* http://127.0.0.1:5000/ */}
         <nav class="flex flex-row m-2">
-            <div class="button">
-                <a href="http://127.0.0.1:5000/"><img src={logo} class="h-16 px-8 " /></a>
-            </div>
-            <ul class="flex ml-auto space-x-4 justify-center items-center px-10">
-                <li><a href="http://127.0.0.1:5000/" class="text-gray-800 hover:text-gray-600 transition duration-300">Home</a></li>
-                <li><a href="/" class="text-gray-800 hover:text-gray-600 transition duration-300">Contact Us</a></li>
-                {/* <li><a href="/" class="text-gray-800 hover:text-gray-600 transition duration-300">Services</a></li> */}
-                <li><a href="/" class="text-gray-800 hover:text-gray-600 transition duration-300">About</a></li>
-            </ul>
-            {/* <div class="flex ml-auto justify-center items-center px-4">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Sign in</button>
-            </div> */}
+          <div class="button">
+            <a href="http://127.0.0.1:5000/"><img src={logo} class="h-16 px-8 " /></a>
+          </div>
+          <ul class="flex ml-auto space-x-4 justify-center items-center px-10">
+            <li><a href="http://127.0.0.1:5000/" class="text-gray-800 hover:text-gray-600 transition duration-300">Home</a></li>
+            <li><a href="/" class="text-gray-800 hover:text-gray-600 transition duration-300">Contact Us</a></li>
+            <li><a href="/" class="text-gray-800 hover:text-gray-600 transition duration-300">About</a></li>
+          </ul>
         </nav>
-    </header>
+      </header>
 
-    <div className="flex justify-center py-8"><img src={logo} alt="" width="200px" srcset="" /></div>
-    <div className="text-center font-bold text-3xl mt-2 text-violet-500">CareSync AI</div>
-    <div className="m-2">
-      <div className="mx-auto ">
-        <div
-          ref={conversationContainerRef}
-          className={`min-h-[300px] overflow-y-auto  rounded p-4 pb-20 ${
-            isOpen ? "block" : "hidden"
-          }`}
-        >
-          {conversation.map((item, index) => (
-            <div key={index} className={`mb-2 text-left bg-stone-100 p-2 rounded-lg p`}>
-              <span
-                className={`bg-${
-                  item.fromUser ? "red-600" : "red-300"
-                } text-black p-2 rounded`}
+      <div className="flex justify-center py-8"><img src={logo} alt="" width="200px" srcset="" /></div>
+      <div className="text-center font-bold text-3xl mt-2 text-violet-500">CareSync AI</div>
+      <div className="m-2">
+        <div className="mx-auto ">
+          <div
+            ref={conversationContainerRef}
+            className={`min-h-[300px] overflow-y-auto  rounded p-4 pb-20 ${
+              isOpen ? "block" : "hidden"
+            }`}
+          >
+            {conversation.map((item, index) => (
+              <div key={index} className={`mb-2 text-left bg-stone-100 p-2 rounded-lg p`}>
+                <span
+                  className={`bg-${
+                    item.fromUser ? "red-600" : "red-300"
+                  } text-black p-2 rounded`}
+                >
+                  {item.fromUser ? "User : " : "CareSync AI : "}
+                  {item.message}
+                </span>
+              </div>
+            ))}
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className={`fixed bottom-2 left-0 right-0 mx-auto w-max ${
+              isOpen ? "block" : "hidden"
+            }`}>
+              <input
+                type="text"
+                placeholder="Type to chat with CareSync AI..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="px-4 py-2 rounded border border-gray-300 focus:outline-none md:w-96"
+              />
+              <button
+                type="submit"
+                className="bg-violet-500 text-white px-4 py-2 rounded hover:bg-violet-600 focus:outline-none m-2 duration-300 hover:scale-105"
               >
-                {item.fromUser ? "User : " : "CareSync AI : "}
-                {item.message}
-              </span>
+                Send
+              </button>
+              <button
+                onClick={toggleChat}
+                className="mt-2 bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none duration-300 hover:scale-105"
+              >
+                Close
+              </button>
             </div>
-          ))}
+          </form>
         </div>
-        <div
-  className={`fixed bottom-2 left-0 right-0 mx-auto w-max ${
-    isOpen ? "block" : "hidden"
-  }`}
->
-  <input
-    type="text"
-    placeholder="Type to chat with SwarnAI..."
-    value={message}
-    onChange={(e) => setMessage(e.target.value)}
-    className="px-4 py-2 rounded border border-gray-300 focus:outline-none md:w-96"
-  />
-  <button
-    onClick={handleSendMessage}
-    className="bg-violet-500 text-white px-4 py-2 rounded hover:bg-violet-600 focus:outline-none m-2 duration-300 hover:scale-105"
-  >
-    Send
-  </button>
-  <button
-    onClick={toggleChat}
-    className="mt-2 bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none duration-300 hover:scale-105"
-  >
-    Close
-  </button>
-</div>
-
       </div>
-    </div>
     </>
   );
 }
