@@ -1,7 +1,7 @@
 from flask import Flask, render_template,request
 
 from flask_mysqldb import MySQL
-
+import json
 from random import choice as r_c
 from beem import Hive
 from beem.nodelist import NodeList
@@ -10,10 +10,10 @@ from beem.block import Block
 from beem.account import Account
 from beem.instance import set_shared_blockchain_instance
 from beem.vote import Vote 
-from beem.vote import AccountVotes
+from beem.vote import AccountVotes 
 from beem.comment import Comment 
 from beem.market import Market 
-from beem.witness import Witness
+from beem.witness import Witness 
 from beem.account import Account
 
 
@@ -33,6 +33,10 @@ hive.wallet.wipe(True)
 hive.wallet.unlock("wallet-passphrase")
 account = Account("suraj210321", blockchain_instance=hive)
 
+for account_history in account.history():
+    formatted_json = json.dumps(account_history, indent=1)
+    print(formatted_json)
+
 
 balance = account.balances
 
@@ -47,7 +51,7 @@ def index():
         # dob1=request.form['dob1']
 
         
-        
+         
 
         
         

@@ -3,12 +3,20 @@ from flask_cors import CORS
 import google.generativeai as genai
 import json
 import re
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env
+load_dotenv()
 
 app = Flask(__name__) 
 CORS(app)
 
-# Configure with your Gemini API key
-genai.configure(api_key='AIzaSyByotfqN98f6WXvs71unsNe6gGBFc-IOmA')
+# Fetch the API key from environment variables
+GENAI_API_KEY = os.getenv("GENAI_API_KEY")
+
+# Configure with the fetched API key
+genai.configure(api_key=GENAI_API_KEY)
 
 @app.route('/generate_response', methods=['POST'])
 def generate_response():
