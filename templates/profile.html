@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% block title %} Profile {% endblock title %} {% block
+    body %}
+
+<!-- header starts here  -->
+
+<header class="font-black">
+    <nav class="flex flex-row m-2">
+      <div class="m-2 mx-8">
+        <img
+          src="{{url_for('static', filename='images/logo.png')}}"
+          class="h-16"
+        />
+      </div>
+      <ul class="flex ml-auto space-x-4 justify-center items-center text-xl cursor-pointer px-8">
+        <li>
+          <a
+            href="/"
+            class="text-gray-800 hover:text-gray-900 hover:scale-105 font-bold transition duration-300 mx-4"
+            >Contact Us</a
+          >
+        </li>
+        <li>
+          <a
+            id="service"
+            class="text-gray-800 hover:text-gray-900 hover:scale-105 font-bold transition duration-300 mx-4"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            href="/"
+            class="text-gray-800 hover:text-gray-900 hover:scale-105 font-bold transition duration-300 mx-4"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="/profile"
+            class="text-gray-800 hover:text-gray-900 hover:scale-105 font-bold transition duration-300 mx-4"
+            >Profile</a
+          >
+        </li>
+        <!-- <li><a href="/" class="text-gray-800 hover:text-gray-600 transition duration-300">Home Page</a></li> -->
+      </ul>
+      <!-- <div class="flex ml-auto justify-center items-center px-4">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Sign in
+        </button>
+      </div> -->
+    </nav>
+  </header>
+  
+
+<!-- header ends here  -->
+
+<!-- profile section starts here  -->
+ 
+<div class="flex flex-row m-2">
+    <div class="basis-1/2 m-2 flex justify-center items-center pt-28"> <img
+        src="{{url_for('static',filename='images/profile_image.jpeg')}}"
+        class="rounded-lg w-[500px]"
+      /></div>
+    <div class="basis-1/2 m-2 flex-col items-center pt-28">    <h1 class="text-3xl font-semibold">User Profile</h1>
+        <p class="font-medium text-xl hover:scale-105 duration-300 my-4 mt-10">Available balance: {{ balance.available }}</p>
+        <p class="font-medium text-xl hover:scale-105 duration-300 my-4">Savings balance: {{ balance.savings }}</p>
+        <p class="font-medium text-xl hover:scale-105 duration-300 my-4">Rewards balance: {{ balance.rewards }}</p>
+        <p class="font-medium text-xl hover:scale-105 duration-300 my-4">Total balance: {{ balance.total }}</p>
+        <p class="font-bold text-3xl pt-48 hover:scale-105 duration-300">Click here to see History >></p></div>
+        
+</div>
+
+
+<!-- profile section ends here  -->
+
+
+
+
+
+
+
+{% endblock body %}

@@ -1,8 +1,7 @@
-{% extends "base.html" %}
-{% block title %} Home{% endblock title %} 
-{% block body %}
-    <header class="header">
-        <nav class="navbar">
+{% extends "base.html" %} {% block title %} Home{% endblock title %} {% block
+body %}
+<!-- <header class="font-black">
+        <nav class="flex flex-row m-2">
             <ul>
                 <a href="/">Contact Us</a>
                 <a href="/">Services</a>
@@ -11,45 +10,205 @@
                 <div class="button"><button>Sign in</button></div>
             </ul>
         </nav>
-    </header>
-    <section class="section">
-        <div class="left">
-            <div class="quote">“ Stay Informed, Stay Healthy        Explore YOLO Today ”</div>
-            <div class="text2">
-                This websites aim to empower individuals to take control of their health by offering access to medical expertise, educational content, and tools for managing health-related concerns
-            </div>
-            <div class="button1"><button>Start Chat</button></div>
+    </header> -->
+<header class="font-black">
+  <nav class="flex flex-row m-2">
+    <div class="m-2 mx-8">
+      <img
+        src="{{url_for('static', filename='images/logo.png')}}"
+        class="h-16"
+      />
+    </div>
+    <ul class="flex ml-auto space-x-4 justify-center items-center text-xl cursor-pointer">
+      <li>
+        <a
+          href="/"
+          class="text-gray-800 hover:text-gray-900 hover:scale-105 font-bold transition duration-300 mx-4"
+          >Contact Us</a
+        >
+      </li>
+      <li>
+        <a
+          id="service"
+          class="text-gray-800 hover:text-gray-900 hover:scale-105 font-bold transition duration-300 mx-4"
+          >Services</a
+        >
+      </li>
+      <li>
+        <a
+          href="/"
+          class="text-gray-800 hover:text-gray-900 hover:scale-105 font-bold transition duration-300 mx-4"
+          >About</a
+        >
+      </li>
+      <li>
+        <a
+          href="/profile"
+          class="text-gray-800 hover:text-gray-900 hover:scale-105 font-bold transition duration-300 mx-4"
+          >Profile</a
+        >
+      </li>
+      <!-- <li><a href="/" class="text-gray-800 hover:text-gray-600 transition duration-300">Home Page</a></li> -->
+    </ul>
+    <div class="flex ml-auto justify-center items-center px-4">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Sign in
+      </button>
+    </div>
+  </nav>
+</header>
+
+
+<!-- main section starts here  -->
+
+<div class="flex flex-row h-screen bg-[#CDE6EE]">
+  <div class="basis-1/2 m-4 flex flex-col pt-28 items-center">
+    <div class="text-5xl text-center font-semibold">
+      “ Stay Informed, Stay Healthy Explore CareSync Today ”
+    </div>
+    <div class="text-center w-[500px] font-medium text-xl my-8">
+      This websites aim to empower individuals to take control of their health
+      by offering access to medical expertise, educational content, and tools
+      for managing health-related concerns
+    </div>
+    <div class="px-8">
+      <button class="px-8 bg-[#16C6E0] text-2xl py-2 rounded-lg hover:scale-105 duration-300">
+        <a href="http://localhost:5173/" target="_blank">Start Chat</a>
+      </button>
+    </div>
+  </div>
+  <div class="basis-1/2 m-4 flex 9t-28hover: justify-center">
+    <img
+      src="{{url_for('static',filename='images/Ellipse_1.png')}}"
+      class="pic1"
+    />
+    <img
+      src="{{url_for('static',filename='images/female_doctor_hospital_1.png')}}"
+      class="pic2"
+    />
+  </div>
+</div>
+
+<!-- landing section ends here  -->
+
+
+<!-- our section starts here  -->
+<section class="section2" id="our-services">
+  <div class="text-4xl font-bold text-center py-8 mx-10">Our Services</div>
+  <div class="flex flex-row justify-cente mx-32 mt-4">
+    <div class="basis-1/3 mr-10 flex-col justify-center items-center">
+      <img
+        class="h-[350px] rounded"
+        src="{{url_for('static',filename='images/doctor_consultation.jpeg')}}"
+        alt=""
+        srcset=""
+      />
+      <div class="py-2 text-center my-2 w-[350px] rounded bg-slate-700 text-white text-xl hover:scale-105 duration-300">Doctor Appointment</div>
+    </div>
+    <div class="basis-1/3 mx-4 flex-col justify-center items-center">
+      <img
+        class="h-[350px] rounded"
+        src="{{url_for('static',filename='images/payments.jpeg')}}"
+        alt=""
+        srcset=""
+      />
+      <div class="py-2 text-center my-2 w-[350px] rounded bg-slate-700 text-white text-xl hover:scale-105 duration-300">World Wide Transaction</div>
+    </div>
+    <div class="basis-1/3 ml-10 flex-col justify-center items-center">
+      <img
+        class="h-[350px] rounded"
+        src="{{url_for('static',filename='images/chatbot.jpeg')}}"
+        alt=""
+        srcset=""
+      />
+      <div class="py-2 text-center my-2 w-[350px] rounded bg-slate-700 text-white text-xl hover:scale-105 duration-300">CareSync Chatbot</div>
+    </div>
+  </div>
+</section>
+<!-- our section ends here  -->
+
+
+<!-- footer section starts here  -->
+
+<div class="w-screen bg-slate-900 h-1/4 mt-10">
+    <div class="flex flex-row">
+      <div class="basis-2/3 m-10 md:ml-32 text-white flex flex-col">
+        <div class="mb-4">
+          <span class="w-max md:text-3xl">
+            <strong>CareSync</strong>
+          </span>
         </div>
-        <div class="right">
-            <img src="{{url_for('static',filename='images/Ellipse_1.png')}}" class="pic1">
-            <img src="{{url_for('static',filename='images/female_doctor_hospital_1.png')}}" class="pic2">    
+        <div class="md:text-xl">
+          <a href="/" class="text-white hover:text-gray-300">Our Team</a>
         </div>
-    </section>
-    <section class="section2">
-        <div class="quote abc">Our Services</div>
-        <div class="text3">
-            This websites aim to empower individuals to take control of their health by offering access to medical expertise, educational content, and tools for managing health-related concerns
+        <div class="md:text-xl">
+          <a href="/" class="text-white hover:text-gray-300">About Us</a>
         </div>
-    </section>
-    <section class=section3>
-        <div class="left1">
-            <div class=pic3><img src="{{url_for('static',filename='images/Rectangle_36.png')}}"></div>
+        <div class="md:text-xl">
+          <a href="/" class="text-white hover:text-gray-300">Contact Us</a>
         </div>
-        <div class="right1">
-            <div class="quote abc2">Free Consultation</div>
-            <div class="text2 abc3">Register here for a free consultation</div>
-                <form action="/" method="POST">            
-                    <input type="text" class="input" id="username" placeholder="  Enter username" name="username" required >
-                    <input type="email" class="input" id="email" placeholder="  Enter Your Email" name="email" required>
-                    <input type="text" class="input" id="firstname" placeholder="  First Name" name="firstname" required >
-                    <input type="text" class="input" id="lastname" placeholder="  Last Name" name="lastname" required >
-                    <input type="text" class="input" id="phone" name="phone" placeholder= "  Your phone Number" required>
-                    <input type="date" class="input" id="dob1" name="dob1" placeholder= "  Date of Birth" required>
-                    <input type="submit" value="Get a Free Consultation"/>
-                </form>
-            <div class=link><a href="/doctor_reg">Are you a Doctor? Sign in here</a></div>
+        <div class="md:text-xl">
+          <a href="/" class="text-white hover:text-gray-300">Privacy Policy</a>
         </div>
-    </section>
-    <footer>
-    </footer>
+        <div class="md:text-xl">
+          <a href="/" class="text-white hover:text-gray-300">Terms & Conditions</a>
+        </div>
+      </div>
+      <div class="basis-1/3 m-10 md:ml-32 text-white flex flex-col mr-4">
+        <div class="bg-slate-800 rounded-lg w-min p-4 mb-10 hover:scale-105 duration-300 hover:bg-slate-700">
+          <button class="w-max text-white hover:text-gray-300">Download Our App</button>
+        </div>
+  
+        <div class="hidden md:block">
+          <strong>Connect on Social Media</strong>
+          <div class="">
+            <a href="/" class="text-white hover:text-gray-300">Instagram</a>
+          </div>
+          <div class="">
+            <a href="/" class="text-white hover:text-gray-300">Youtube</a>
+          </div>
+          <div class="">
+            <a href="/" class="text-white hover:text-gray-300">Facebook</a>
+          </div>
+        </div>
+        <div class="hidden m-2">
+          <span>
+            <strong>Connect on Socials</strong>
+          </span>
+        </div>
+        <div>
+          <div class="my-1 md:text-xl flex items-center m-2">
+            <span class="text-white mr-2"><i class="fab fa-instagram"></i></span>
+            <span class="text-white mr-2"><i class="fab fa-linkedin"></i></span>
+            <!-- <span>@ecoisticpathshala</span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<!-- footer section ends here  -->
+<script>
+    // Function to scroll to the Our Services section
+    function scrollToOurServices() {
+      // Select the Our Services section
+      const ourServicesSection = document.getElementById('our-services');
+      // Scroll to the top of the Our Services section smoothly
+      ourServicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  
+    // Select the Services link in the navbar
+    const servicesLink = document.getElementById('service');
+  
+    // Add click event listener to the Services link
+    servicesLink.addEventListener('click', function(event) {
+      // Prevent default behavior of the link (e.g., page refresh)
+      event.preventDefault();
+      // Scroll to the Our Services section when Services link is clicked
+      scrollToOurServices();
+    });
+  </script>
 {% endblock body %}

@@ -27,7 +27,7 @@ body{
     padding-left: 40px;
     font-size: 17px;
 }
-.button{
+/* .button{
     padding-left: 40px;
     padding-right: 50px;
 }
@@ -38,7 +38,7 @@ button{
     font-size: 17px;
     background-color: #16C6E0;
     border-radius: 10px;
-}
+} */
 .text{
     color: black;
 }
@@ -102,14 +102,14 @@ button{
 }
 .pic1{
     position: absolute;
-        top: -50;
-        left: 0;
+        /* top: -50;
+        left: 0; */
 
 }
 .pic2{
     position: absolute;
-    top: 0px;
-    left: 0px;
+    /* top: 0px;
+    left: 0px; */
 
 }
 .pic3{
@@ -183,10 +183,10 @@ input[type="submit"] {
     height: 40px;
     
 }
-
+/* 
 button:hover{
     background-color: darkgreen;
-}
+} */
 .link{
     padding-left: 220px;
 }

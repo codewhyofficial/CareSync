@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %} Chat CareSync{% endblock title %} 
+{% block body %}
+
+
+<div class="flex justify-center">
+    <img src="mascot.png" alt="" width="200px">
+</div>
+<div class="text-center font-bold text-3xl mt-2 text-violet-500">ChatSync AI</div>
+<div class="m-2">
+    <div class="mx-auto">
+        <div id="conversationContainer" class="min-h-300 overflow-y-auto rounded p-4 pb-20 hidden">
+            <!-- Conversation messages will be dynamically added here -->
+        </div>
+        <div id="chatControls" class="fixed bottom-2 left-0 right-0 mx-auto w-max">
+            <input id="messageInput" type="text" placeholder="Type to chat with SwarnAI..." class="px-4 py-2 rounded border border-gray-300 focus:outline-none md:w-96">
+            <button id="sendButton" class="bg-violet-500 text-white px-4 py-2 rounded hover:bg-violet-600 focus:outline-none m-2 duration-300 hover:scale-105">Send</button>
+            <button id="closeButton" class="mt-2 bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none duration-300 hover:scale-105">Close</button>
+        </div>
+    </div>
+</div>
+
+
+  <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+  const messageInput = document.getElementById("messageInput");
+  const sendButton = document.getElementById("sendButton");
+  const closeButton = document.getElementById("closeButton");
+  const conversationContainer = document.getElementById("conversationContainer");
+  let conversation = [];
+  let isOpen = true;
+
+  function toggleChat() {
+    isOpen = !isOpen;
+    conversationContainer.classList.toggle("hidden", !isOpen);
+    chatControls.classList.toggle("hidden", !isOpen);
+  }
+
+  function scrollToBottom() {
+    conversationContainer.scrollTop = conversationContainer.scrollHeight;
+  }
+  function renderConversation() {
+  conversationContainer.innerHTML = ""; // Clear previous messages
+  
+  conversation.forEach(item => {
+    const messageDiv = document.createElement("div"); // Create a div for each message
+    messageDiv.classList.add("mb-2", "text-left", "bg-stone-100", "p-2", "rounded-lg");
+    
+    const span = document.createElement("span"); // Create a span element to display the message content
+    span.classList.add(item.fromUser ? "bg-red-600" : "bg-red-300", "text-black", "p-2", "rounded");
+    span.textContent = item.fromUser ? "User : " : "SwarnAI : "; // Add "User :" or "SwarnAI :" before the message
+    span.textContent += item.message; // Add the message content
+    
+    messageDiv.appendChild(span); // Append the span element to the message div
+    conversationContainer.appendChild(messageDiv); // Append the message div to the conversation container
+  });
+  
+  scrollToBottom(); // Scroll to the bottom of the conversation container
+}
+
+
+  sendButton.addEventListener("click", async () => {
+    const message = messageInput.value.trim();
+    if (!message) return;
+
+    const newUserMessage = { message, fromUser: true };
+    conversation.push(newUserMessage);
+    renderConversation();
+    messageInput.value = "";
+
+    try {
+      const url = "http://127.0.0.1:5001/generate_response";
+      const requestBody = { prompt: message };
+      console.log(requestBody)
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const responseData = await response.json();
+      const botResponse = { message: responseData.response, fromUser: false };
+      conversation.push(botResponse);
+      console.log(botResponse)
+      renderConversation();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  });
+
+  closeButton.addEventListener("click", toggleChat);
+
+  // toggleChat(); // Remove this line
+
+});
+
+
+  </script>
+
+
+
+
+{% endblock body %}
